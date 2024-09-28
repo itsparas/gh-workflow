@@ -4,6 +4,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Output event name
+        run: echo "${{toJSON(github.event)}}"
       - name: Get Code
         uses: actions/checkout@v3
       - name: Install NodeJS
@@ -14,3 +16,7 @@ jobs:
         run: npm ci
       - name: Run Tests
         run: npm test
+      - name: build code
+        run: npm run build
+      - name: deploy code
+        run: echo "deploying ..."
